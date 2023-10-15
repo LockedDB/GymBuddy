@@ -11,42 +11,51 @@ import os
 struct ContentView: View {
     static let logger = Logger(subsystem: GymBuddyApp.subsystem, category: "ContentView")
     
+    let cardHeight: CGFloat = 64
+    
     var body: some View {
-        VStack (alignment: .leading) {
-            Text("Welcome")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            Text("Here's your training for the day.").font(.subheadline)
-            
-            
-            HStack () {
-                VStack(alignment: .leading) {
-                    Text("Legs & Curl Workout 💪")
-                    
-                    Spacer()
-                    
-                    HStack {
-                        Spacer()
-                        Image(systemName: "arrow.right")
-                    }
-                }
+        ScrollView {
+            VStack (alignment: .leading) {
+                Text("Welcome")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                Text("Here's your training for the day.").font(.subheadline)
                 
-                Spacer()
+                
+                Button(action: {
+                    
+                }) {
+                    HStack () {
+                        VStack(alignment: .leading) {
+                            Text("Legs & Curl Workout 💪")
+                            
+                            Spacer()
+                            
+                            HStack {
+                                Spacer()
+                                Image(systemName: "arrow.right")
+                            }
+                        }
+                        
+                        Spacer()
+                    }
+                    .frame(height: cardHeight)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(.black)
+                    )
+                    .padding(.vertical, 8)
+                }
+                .foregroundStyle(.black)
+                
             }
-            .frame(height: 64)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(.black)
-            )
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
+            
+            
+            Spacer()
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal)
-        .padding(.top)
-        
-        
-        Spacer()
     }
 }
 
